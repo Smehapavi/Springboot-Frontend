@@ -1,7 +1,8 @@
 import { Routes, Route, Link } from 'react-router-dom';
 import Signup from './components/Signup';
 import Login from './components/Login';
-import EmployeeList from './components/EmployeeList';
+import GetEmployees from "./components/GetEmployees";
+import AddEmployees from "./components/AddEmployees";
 
 function App() {
   return (
@@ -14,6 +15,8 @@ function App() {
             <Link to="/signup" className="btn btn-outline-light me-2">Signup</Link>
             <Link to="/login" className="btn btn-outline-light me-2">Login</Link>
             <Link to="/employeeList" className="btn btn-outline-light">Employees</Link>
+            <Link to="/add" className="btn btn-outline-light">AddEmployees</Link>
+            <Link to="/getemployees" className="btn btn-outline-light">Employee List</Link>
           </nav>
         </div>
       </header>
@@ -23,7 +26,8 @@ function App() {
         <Routes>
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/employeeList" element={<EmployeeList />} />
+          <Route path="/add" element={<AddEmployees />} />
+          <Route path="/getemployees" element={<GetEmployees/>}/>
         </Routes>
       </main>
 
