@@ -1,41 +1,41 @@
-import { Routes, Route, Link } from 'react-router-dom';
-import Signup from './components/Signup';
-import Login from './components/Login';
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Home from "./components/Home";
+import Login from "./components/Login";
+import Signup from "./components/Register";
 import GetEmployees from "./components/GetEmployees";
-import AddEmployees from "./components/AddEmployees";
+import EditEmployee from './components/EditEmployee';
+import EmployeesList from './components/EmployeesList';
+import EmployeeTasks from './components/EmployeeTasks';
+import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
   return (
-    <div>
-      
-      <header className="bg-dark text-white p-3 shadow-sm">
-        <div className="container d-flex justify-content-between align-items-center">
-          <h2 className="m-0">Employee Management System</h2>
-          <nav>
-            <Link to="/signup" className="btn btn-outline-light me-2">Signup</Link>
-            <Link to="/login" className="btn btn-outline-light me-2">Login</Link>
-            <Link to="/employeeList" className="btn btn-outline-light">Employees</Link>
-            <Link to="/add" className="btn btn-outline-light">AddEmployees</Link>
-            <Link to="/getemployees" className="btn btn-outline-light">Employee List</Link>
-          </nav>
-        </div>
-      </header>
-
-     
-      <main className="container my-5">
+    <Router>
+      <Navbar />
+      <div style={{ padding: "20px" }}>
         <Routes>
-          <Route path="/signup" element={<Signup />} />
+          <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/add" element={<AddEmployees />} />
-          <Route path="/getemployees" element={<GetEmployees/>}/>
-        </Routes>
-      </main>
+          <Route
+          path="/employee"
+          element={
+            <ProtectedRoute>
+              <GetEmployees />
+            </ProtectedRoute>
+          }
+        />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/employee" element={<GetEmployees />} />
+          <Route path="/edit/:empId" element={<EditEmployee />} />
+          <Route path="/employeelist" element={<EmployeesList />} />
+          <Route path="/employee/:empId/tasks" element={<EmployeeTasks />} />
+          
 
-     
-      <footer className="bg-secondary text-white text-center p-3 mt-auto">
-        &copy; 2025 Employee Management System
-      </footer>
-    </div>
+        </Routes>
+      </div>
+    </Router>
   );
 }
 

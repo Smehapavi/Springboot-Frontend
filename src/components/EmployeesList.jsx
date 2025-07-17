@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 
-const Register = () => {
+const EmployeesList = () => {
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -40,7 +40,7 @@ const Register = () => {
         <div className="col-md-6 col-lg-5">
           <div className="card shadow">
             <div className="card-body">
-              <h3 className="card-title text-center mb-4">Register</h3>
+              <h3 className="card-title text-center mb-4">Add Employees</h3>
               <form onSubmit={handleSubmit}>
                 <div className="mb-3">
                   <label htmlFor="name" className="form-label">Full Name</label>
@@ -109,7 +109,7 @@ const Register = () => {
                 </div>
 
                 <button type="submit" className="btn btn-primary w-100">
-                  Register
+                  ADD
                 </button>
               </form>
             </div>
@@ -119,5 +119,4 @@ const Register = () => {
     </div>
   );
 };
-
-export default Register;
+export default EmployeesList;
